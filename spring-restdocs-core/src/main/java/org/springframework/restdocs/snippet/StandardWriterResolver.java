@@ -40,7 +40,7 @@ public final class StandardWriterResolver implements WriterResolver {
 
 	private String encoding = "UTF-8";
 
-	private TemplateFormat templateFormat;
+	private final TemplateFormat templateFormat;
 
 	/**
 	 * Creates a new {@code StandardWriterResolver} that will use a

@@ -112,9 +112,9 @@ public class OperationBuilder extends OperationTestRule {
 		this.attributes.put(WriterResolver.class.getName(), new StandardWriterResolver(
 				new RestDocumentationContextPlaceholderResolverFactory(), "UTF-8", this.templateFormat));
 		return new StandardOperation(this.name,
-				((this.requestBuilder == null) ? new OperationRequestBuilder("http://localhost/").buildRequest()
+				(this.requestBuilder == null ? new OperationRequestBuilder("http://localhost/").buildRequest()
 						: this.requestBuilder.buildRequest()),
-				(this.responseBuilder == null) ? new OperationResponseBuilder().buildResponse()
+				this.responseBuilder == null ? new OperationResponseBuilder().buildResponse()
 						: this.responseBuilder.buildResponse(),
 				this.attributes);
 	}
@@ -123,8 +123,7 @@ public class OperationBuilder extends OperationTestRule {
 		ManualRestDocumentation manualRestDocumentation = new ManualRestDocumentation(
 				this.outputDirectory.getAbsolutePath());
 		manualRestDocumentation.beforeTest(null, null);
-		RestDocumentationContext context = manualRestDocumentation.beforeOperation();
-		return context;
+		return manualRestDocumentation.beforeOperation();
 	}
 
 	@Override

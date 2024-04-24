@@ -73,7 +73,7 @@ public abstract class WebTestClientRestDocumentation {
 	 * @see BodyContentSpec#consumeWith(Consumer)
 	 */
 	public static <T extends ExchangeResult> Consumer<T> document(String identifier, Snippet... snippets) {
-		return (result) -> new RestDocumentationGenerator<>(identifier, REQUEST_CONVERTER, RESPONSE_CONVERTER, snippets)
+		return result -> new RestDocumentationGenerator<>(identifier, REQUEST_CONVERTER, RESPONSE_CONVERTER, snippets)
 			.handle(result, result, retrieveConfiguration(result));
 	}
 
@@ -90,7 +90,7 @@ public abstract class WebTestClientRestDocumentation {
 	 */
 	public static <T extends ExchangeResult> Consumer<T> document(String identifier,
 			OperationRequestPreprocessor requestPreprocessor, Snippet... snippets) {
-		return (result) -> new RestDocumentationGenerator<>(identifier, REQUEST_CONVERTER, RESPONSE_CONVERTER,
+		return result -> new RestDocumentationGenerator<>(identifier, REQUEST_CONVERTER, RESPONSE_CONVERTER,
 				requestPreprocessor, snippets)
 			.handle(result, result, retrieveConfiguration(result));
 	}
@@ -108,7 +108,7 @@ public abstract class WebTestClientRestDocumentation {
 	 */
 	public static <T extends ExchangeResult> Consumer<T> document(String identifier,
 			OperationResponsePreprocessor responsePreprocessor, Snippet... snippets) {
-		return (result) -> new RestDocumentationGenerator<>(identifier, REQUEST_CONVERTER, RESPONSE_CONVERTER,
+		return result -> new RestDocumentationGenerator<>(identifier, REQUEST_CONVERTER, RESPONSE_CONVERTER,
 				responsePreprocessor, snippets)
 			.handle(result, result, retrieveConfiguration(result));
 	}
@@ -129,7 +129,7 @@ public abstract class WebTestClientRestDocumentation {
 	public static <T extends ExchangeResult> Consumer<T> document(String identifier,
 			OperationRequestPreprocessor requestPreprocessor, OperationResponsePreprocessor responsePreprocessor,
 			Snippet... snippets) {
-		return (result) -> new RestDocumentationGenerator<>(identifier, REQUEST_CONVERTER, RESPONSE_CONVERTER,
+		return result -> new RestDocumentationGenerator<>(identifier, REQUEST_CONVERTER, RESPONSE_CONVERTER,
 				requestPreprocessor, responsePreprocessor, snippets)
 			.handle(result, result, retrieveConfiguration(result));
 	}

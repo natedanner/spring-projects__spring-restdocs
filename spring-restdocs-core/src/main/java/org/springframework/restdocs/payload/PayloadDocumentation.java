@@ -1505,7 +1505,7 @@ public abstract class PayloadDocumentation {
 		List<FieldDescriptor> prefixedDescriptors = new ArrayList<>();
 		for (FieldDescriptor descriptor : descriptors) {
 			String prefixedPath = pathPrefix + descriptor.getPath();
-			FieldDescriptor prefixedDescriptor = (descriptor instanceof SubsectionDescriptor)
+			FieldDescriptor prefixedDescriptor = descriptor instanceof SubsectionDescriptor
 					? new SubsectionDescriptor(prefixedPath) : new FieldDescriptor(prefixedPath);
 			prefixedDescriptor.description(descriptor.getDescription())
 				.type(descriptor.getType())

@@ -53,7 +53,7 @@ class WebTestClientResponseConverter implements ResponseConverter<ExchangeResult
 			.values()
 			.stream()
 			.flatMap(Collection::stream)
-			.forEach((cookie) -> headers.add(HttpHeaders.SET_COOKIE, generateSetCookieHeader(cookie)));
+			.forEach(cookie -> headers.add(HttpHeaders.SET_COOKIE, generateSetCookieHeader(cookie)));
 		return headers;
 	}
 

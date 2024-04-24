@@ -62,7 +62,7 @@ public class HttpResponseSnippet extends TemplatedSnippet {
 		model.put("headers", headers(response));
 		HttpStatusCode status = response.getStatus();
 		model.put("statusCode", status.value());
-		model.put("statusReason", (status instanceof HttpStatus) ? ((HttpStatus) status).getReasonPhrase() : "");
+		model.put("statusReason", status instanceof HttpStatus ? ((HttpStatus) status).getReasonPhrase() : "");
 		return model;
 	}
 

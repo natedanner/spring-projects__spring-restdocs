@@ -44,10 +44,9 @@ public class GradleOperationBlockMacroTests extends AbstractOperationBlockMacroT
 
 	@Override
 	protected Attributes getAttributes() {
-		Attributes attributes = Attributes.builder()
+		return Attributes.builder()
 			.attribute(this.attributeName, new File(this.temp.getRoot(), "gradle-project").getAbsolutePath())
 			.build();
-		return attributes;
 	}
 
 	@Override

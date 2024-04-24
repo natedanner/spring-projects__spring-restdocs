@@ -140,7 +140,7 @@ public class HttpieRequestSnippet extends TemplatedSnippet {
 	private void writeFormDataIfNecessary(OperationRequest request, List<String> lines) {
 		if (MediaType.APPLICATION_FORM_URLENCODED.isCompatibleWith(request.getHeaders().getContentType())) {
 			FormParameters.from(request)
-				.forEach((key, values) -> values.forEach((value) -> lines.add(String.format("'%s=%s'", key, value))));
+				.forEach((key, values) -> values.forEach(value -> lines.add(String.format("'%s=%s'", key, value))));
 		}
 		else {
 			for (OperationRequestPart part : request.getParts()) {

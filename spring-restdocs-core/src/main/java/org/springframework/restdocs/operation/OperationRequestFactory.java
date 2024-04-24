@@ -46,7 +46,7 @@ public class OperationRequestFactory {
 	public OperationRequest create(URI uri, HttpMethod method, byte[] content, HttpHeaders headers,
 			Collection<OperationRequestPart> parts, Collection<RequestCookie> cookies) {
 		return new StandardOperationRequest(uri, method, content, augmentHeaders(headers, uri, content),
-				(parts != null) ? parts : Collections.emptyList(), cookies);
+				parts != null ? parts : Collections.emptyList(), cookies);
 	}
 
 	/**

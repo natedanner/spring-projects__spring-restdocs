@@ -24,7 +24,7 @@ import org.asciidoctor.log.LogRecord;
 
 public class CapturingLogHandler implements LogHandler {
 
-	private static final List<LogRecord> logRecords = new ArrayList<LogRecord>();
+	private static final List<LogRecord> logRecords = new ArrayList<>();
 
 	@Override
 	public void log(LogRecord logRecord) {

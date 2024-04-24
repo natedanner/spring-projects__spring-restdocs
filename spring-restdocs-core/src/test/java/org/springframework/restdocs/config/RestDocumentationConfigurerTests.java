@@ -230,8 +230,7 @@ public class RestDocumentationConfigurerTests {
 	private RestDocumentationContext createContext() {
 		ManualRestDocumentation manualRestDocumentation = new ManualRestDocumentation("build");
 		manualRestDocumentation.beforeTest(null, null);
-		RestDocumentationContext context = manualRestDocumentation.beforeOperation();
-		return context;
+		return manualRestDocumentation.beforeOperation();
 	}
 
 	private static final class TestRestDocumentationConfigurer extends

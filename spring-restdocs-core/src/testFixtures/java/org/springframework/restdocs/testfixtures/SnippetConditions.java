@@ -170,8 +170,8 @@ public final class SnippetConditions {
 			extends CodeBlockCondition<T> {
 
 		protected AsciidoctorCodeBlockCondition(String language, String options) {
-			this.addLine("[source" + ((language != null) ? "," + language : "")
-					+ ((options != null) ? ",options=\"" + options + "\"" : "") + "]");
+			this.addLine("[source" + (language != null ? "," + language : "")
+					+ (options != null ? ",options=\"" + options + "\"" : "") + "]");
 			this.addLine("----");
 			this.addLine("----");
 		}
@@ -187,7 +187,7 @@ public final class SnippetConditions {
 			extends CodeBlockCondition<T> {
 
 		protected MarkdownCodeBlockCondition(String language) {
-			this.addLine("```" + ((language != null) ? language : ""));
+			this.addLine("```" + (language != null ? language : ""));
 			this.addLine("```");
 		}
 

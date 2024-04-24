@@ -28,7 +28,7 @@ import java.util.regex.Pattern;
  */
 class PatternMatchHeaderFilter implements HeaderFilter {
 
-	private Set<Pattern> exclusionPatterns;
+	private final Set<Pattern> exclusionPatterns;
 
 	PatternMatchHeaderFilter(String... exclusionPatterns) {
 		this.exclusionPatterns = new HashSet<>();

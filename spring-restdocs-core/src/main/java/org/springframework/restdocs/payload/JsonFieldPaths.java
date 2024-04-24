@@ -91,7 +91,7 @@ final class JsonFieldPaths {
 	}
 
 	private static String append(String path, Object suffix) {
-		return (path.length() == 0) ? ("" + suffix) : (path + "." + suffix);
+		return path.length() == 0 ? ("" + suffix) : (path + "." + suffix);
 	}
 
 }

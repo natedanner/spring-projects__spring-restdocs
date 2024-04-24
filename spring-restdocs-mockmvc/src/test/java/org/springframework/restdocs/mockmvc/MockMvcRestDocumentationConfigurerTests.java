@@ -37,7 +37,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  */
 public class MockMvcRestDocumentationConfigurerTests {
 
-	private MockHttpServletRequest request = new MockHttpServletRequest();
+	private final MockHttpServletRequest request = new MockHttpServletRequest();
 
 	@Rule
 	public JUnitRestDocumentation restDocumentation = new JUnitRestDocumentation();

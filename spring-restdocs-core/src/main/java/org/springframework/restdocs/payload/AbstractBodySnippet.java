@@ -65,7 +65,7 @@ public abstract class AbstractBodySnippet extends TemplatedSnippet {
 	 */
 	protected AbstractBodySnippet(String name, String type, PayloadSubsectionExtractor<?> subsectionExtractor,
 			Map<String, Object> attributes) {
-		super(name + "-body" + ((subsectionExtractor != null) ? "-" + subsectionExtractor.getSubsectionId() : ""),
+		super(name + "-body" + (subsectionExtractor != null ? "-" + subsectionExtractor.getSubsectionId() : ""),
 				type + "-body", attributes);
 		this.subsectionExtractor = subsectionExtractor;
 	}
@@ -80,7 +80,7 @@ public abstract class AbstractBodySnippet extends TemplatedSnippet {
 				content = this.subsectionExtractor.extractSubsection(content, contentType);
 			}
 			Charset charset = extractCharset(contentType);
-			String body = (charset != null) ? new String(content, charset) : new String(content);
+			String body = charset != null ? new String(content, charset) : new String(content);
 			Map<String, Object> model = new HashMap<>();
 			model.put("language", language);
 			model.put("body", body);
@@ -95,7 +95,7 @@ public abstract class AbstractBodySnippet extends TemplatedSnippet {
 		if (contentType == null) {
 			return null;
 		}
-		return (contentType.getSubtypeSuffix() != null) ? contentType.getSubtypeSuffix() : contentType.getSubtype();
+		return contentType.getSubtypeSuffix() != null ? contentType.getSubtypeSuffix() : contentType.getSubtype();
 	}
 
 	private Charset extractCharset(MediaType contentType) {

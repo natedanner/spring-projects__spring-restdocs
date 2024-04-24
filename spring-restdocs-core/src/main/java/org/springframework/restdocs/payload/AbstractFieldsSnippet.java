@@ -125,7 +125,7 @@ public abstract class AbstractFieldsSnippet extends TemplatedSnippet {
 	protected AbstractFieldsSnippet(String name, String type, List<FieldDescriptor> descriptors,
 			Map<String, Object> attributes, boolean ignoreUndocumentedFields,
 			PayloadSubsectionExtractor<?> subsectionExtractor) {
-		super(name + "-fields" + ((subsectionExtractor != null) ? "-" + subsectionExtractor.getSubsectionId() : ""),
+		super(name + "-fields" + (subsectionExtractor != null ? "-" + subsectionExtractor.getSubsectionId() : ""),
 				type + "-fields", attributes);
 		for (FieldDescriptor descriptor : descriptors) {
 			Assert.notNull(descriptor.getPath(), "Field descriptors must have a path");
@@ -278,7 +278,7 @@ public abstract class AbstractFieldsSnippet extends TemplatedSnippet {
 	}
 
 	private FieldDescriptor copyWithType(FieldDescriptor source, Object type) {
-		FieldDescriptor result = (source instanceof SubsectionDescriptor) ? new SubsectionDescriptor(source.getPath())
+		FieldDescriptor result = source instanceof SubsectionDescriptor ? new SubsectionDescriptor(source.getPath())
 				: new FieldDescriptor(source.getPath());
 		result.description(source.getDescription()).type(type).attributes(asArray(source.getAttributes()));
 		if (source.isIgnored()) {

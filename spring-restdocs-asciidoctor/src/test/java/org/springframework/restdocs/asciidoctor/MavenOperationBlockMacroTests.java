@@ -45,8 +45,7 @@ public class MavenOperationBlockMacroTests extends AbstractOperationBlockMacroTe
 		try {
 			File sourceLocation = getSourceLocation();
 			new File(sourceLocation.getParentFile().getParentFile().getParentFile(), "pom.xml").createNewFile();
-			Attributes attributes = Attributes.builder().attribute("docdir", sourceLocation.getAbsolutePath()).build();
-			return attributes;
+			return Attributes.builder().attribute("docdir", sourceLocation.getAbsolutePath()).build();
 		}
 		catch (IOException ex) {
 			throw new RuntimeException(ex);

@@ -47,7 +47,7 @@ public class WebTestClientResponseConverterTests {
 	public void basicResponse() {
 		ExchangeResult result = WebTestClient
 			.bindToRouterFunction(
-					RouterFunctions.route(GET("/foo"), (req) -> ServerResponse.ok().bodyValue("Hello, World!")))
+					RouterFunctions.route(GET("/foo"), req -> ServerResponse.ok().bodyValue("Hello, World!")))
 			.configureClient()
 			.baseUrl("http://localhost")
 			.build()
@@ -68,7 +68,7 @@ public class WebTestClientResponseConverterTests {
 	public void responseWithCookie() {
 		ExchangeResult result = WebTestClient
 			.bindToRouterFunction(RouterFunctions.route(GET("/foo"),
-					(req) -> ServerResponse.ok()
+					req -> ServerResponse.ok()
 						.cookie(org.springframework.http.ResponseCookie.from("name", "value")
 							.domain("localhost")
 							.httpOnly(true)
@@ -94,7 +94,7 @@ public class WebTestClientResponseConverterTests {
 	@Test
 	public void responseWithNonStandardStatusCode() {
 		ExchangeResult result = WebTestClient
-			.bindToRouterFunction(RouterFunctions.route(GET("/foo"), (req) -> ServerResponse.status(210).build()))
+			.bindToRouterFunction(RouterFunctions.route(GET("/foo"), req -> ServerResponse.status(210).build()))
 			.configureClient()
 			.baseUrl("http://localhost")
 			.build()

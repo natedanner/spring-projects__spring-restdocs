@@ -31,7 +31,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  */
 public class ConcatenatingCommandFormatterTests {
 
-	private CommandFormatter singleLineFormat = new ConcatenatingCommandFormatter(" ");
+	private final CommandFormatter singleLineFormat = new ConcatenatingCommandFormatter(" ");
 
 	@Test
 	public void formattingAnEmptyListProducesAnEmptyString() {

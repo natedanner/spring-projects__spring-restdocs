@@ -35,7 +35,7 @@ abstract class AbstractOperationMessage implements OperationMessage {
 	private final HttpHeaders headers;
 
 	AbstractOperationMessage(byte[] content, HttpHeaders headers) {
-		this.content = (content != null) ? content : new byte[0];
+		this.content = content != null ? content : new byte[0];
 		this.headers = headers;
 	}
 

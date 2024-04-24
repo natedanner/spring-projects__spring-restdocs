@@ -58,7 +58,7 @@ final class JsonFieldProcessor {
 		if (values.isEmpty()) {
 			values.add(ExtractedField.ABSENT);
 		}
-		return new ExtractedField((compiledPath.getType() != PathType.SINGLE) ? values : values.get(0),
+		return new ExtractedField(compiledPath.getType() != PathType.SINGLE ? values : values.get(0),
 				compiledPath.getType());
 	}
 
@@ -163,7 +163,7 @@ final class JsonFieldProcessor {
 		@Override
 		public void foundMatch(Match match) {
 			this.matchType = this.matchType
-				.combinedWith((match.getValue() != null) ? MatchType.NON_NULL : MatchType.NULL);
+				.combinedWith(match.getValue() != null ? MatchType.NON_NULL : MatchType.NULL);
 		}
 
 		@Override
@@ -386,7 +386,7 @@ final class JsonFieldProcessor {
 		private ProcessingContext(Object payload, JsonFieldPath path, List<String> segments, Match parent) {
 			this.payload = payload;
 			this.path = path;
-			this.segments = (segments != null) ? segments : path.getSegments();
+			this.segments = segments != null ? segments : path.getSegments();
 			this.parent = parent;
 		}
 

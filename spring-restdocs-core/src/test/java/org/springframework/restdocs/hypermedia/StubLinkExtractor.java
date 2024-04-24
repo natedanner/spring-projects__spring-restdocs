@@ -29,7 +29,7 @@ import org.springframework.util.MultiValueMap;
  */
 class StubLinkExtractor implements LinkExtractor {
 
-	private MultiValueMap<String, Link> linksByRel = new LinkedMultiValueMap<>();
+	private final MultiValueMap<String, Link> linksByRel = new LinkedMultiValueMap<>();
 
 	@Override
 	public MultiValueMap<String, Link> extractLinks(OperationResponse response) throws IOException {

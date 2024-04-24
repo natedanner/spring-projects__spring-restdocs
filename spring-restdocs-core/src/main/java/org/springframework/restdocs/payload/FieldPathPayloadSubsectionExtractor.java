@@ -88,7 +88,7 @@ public class FieldPathPayloadSubsectionExtractor
 			}
 			Map<JsonFieldPath, FieldDescriptor> descriptorsByPath = descriptors.stream()
 				.collect(Collectors.toMap(
-						(descriptor) -> JsonFieldPath.compile(this.fieldPath + "." + descriptor.getPath()),
+						descriptor -> JsonFieldPath.compile(this.fieldPath + "." + descriptor.getPath()),
 						this::prependFieldPath));
 			if (value instanceof List) {
 				List<?> extractedList = (List<?>) value;
@@ -99,9 +99,9 @@ public class FieldPathPayloadSubsectionExtractor
 				Set<JsonFieldPath> uncommonPaths = JsonFieldPaths.from(extractedList)
 					.getUncommon()
 					.stream()
-					.map((path) -> JsonFieldPath
-						.compile((path.equals("")) ? this.fieldPath : this.fieldPath + "." + path))
-					.filter((path) -> {
+					.map(path -> JsonFieldPath
+						.compile("".equals(path) ? this.fieldPath : this.fieldPath + "." + path))
+					.filter(path -> {
 						FieldDescriptor descriptorForPath = descriptorsByPath.getOrDefault(path,
 								new FieldDescriptor(path.toString()));
 						return contentHandler.isMissing(descriptorForPath);

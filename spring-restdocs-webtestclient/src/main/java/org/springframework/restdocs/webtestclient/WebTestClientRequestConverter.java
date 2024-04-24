@@ -77,14 +77,14 @@ class WebTestClientRequestConverter implements RequestConverter<ExchangeResult> 
 			.block()
 			.values()
 			.stream()
-			.flatMap((parts) -> parts.stream().map(this::createOperationRequestPart))
+			.flatMap(parts -> parts.stream().map(this::createOperationRequestPart))
 			.collect(Collectors.toList());
 	}
 
 	private OperationRequestPart createOperationRequestPart(Part part) {
 		ByteArrayOutputStream content = readPartBodyContent(part);
 		return new OperationRequestPartFactory().create(part.name(),
-				(part instanceof FilePart) ? ((FilePart) part).filename() : null, content.toByteArray(),
+				part instanceof FilePart ? ((FilePart) part).filename() : null, content.toByteArray(),
 				part.headers());
 	}
 

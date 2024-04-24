@@ -30,7 +30,7 @@ import org.springframework.restdocs.snippet.Attributes.Attribute;
  */
 public abstract class AbstractDescriptor<T extends AbstractDescriptor<T>> {
 
-	private Map<String, Object> attributes = new HashMap<>();
+	private final Map<String, Object> attributes = new HashMap<>();
 
 	private Object description;
 

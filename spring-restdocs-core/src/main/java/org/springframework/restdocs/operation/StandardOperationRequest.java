@@ -30,13 +30,13 @@ import org.springframework.http.HttpMethod;
  */
 class StandardOperationRequest extends AbstractOperationMessage implements OperationRequest {
 
-	private HttpMethod method;
+	private final HttpMethod method;
 
-	private Collection<OperationRequestPart> parts;
+	private final Collection<OperationRequestPart> parts;
 
-	private URI uri;
+	private final URI uri;
 
-	private Collection<RequestCookie> cookies;
+	private final Collection<RequestCookie> cookies;
 
 	/**
 	 * Creates a new request with the given {@code uri} and {@code method}. The request

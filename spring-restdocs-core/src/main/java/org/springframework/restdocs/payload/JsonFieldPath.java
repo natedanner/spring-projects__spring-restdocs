@@ -153,7 +153,7 @@ final class JsonFieldPath {
 		/**
 		 * The path identifies multiple items in the payload.
 		 */
-		MULTI;
+		MULTI
 
 	}
 

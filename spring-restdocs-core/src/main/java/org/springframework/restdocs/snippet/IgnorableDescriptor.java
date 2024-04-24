@@ -24,7 +24,7 @@ package org.springframework.restdocs.snippet;
  */
 public abstract class IgnorableDescriptor<T extends IgnorableDescriptor<T>> extends AbstractDescriptor<T> {
 
-	private boolean ignored = false;
+	private boolean ignored;
 
 	/**
 	 * Marks the described item as being ignored. Ignored items are not included in the

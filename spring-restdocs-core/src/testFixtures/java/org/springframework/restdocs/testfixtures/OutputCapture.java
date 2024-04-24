@@ -84,7 +84,7 @@ class OutputCapture implements CapturedOutput {
 	 */
 	@Override
 	public String getAll() {
-		return get((type) -> true);
+		return get(type -> true);
 	}
 
 	/**

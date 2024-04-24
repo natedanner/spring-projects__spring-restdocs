@@ -27,7 +27,7 @@ import org.springframework.util.CollectionUtils;
  */
 final class ConcatenatingCommandFormatter implements CommandFormatter {
 
-	private String separator;
+	private final String separator;
 
 	ConcatenatingCommandFormatter(String separator) {
 		this.separator = separator;

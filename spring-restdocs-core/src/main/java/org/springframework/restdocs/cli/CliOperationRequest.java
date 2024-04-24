@@ -171,7 +171,7 @@ final class CliOperationRequest implements OperationRequest {
 		}
 
 		private String getImplicitHostHeader() {
-			return this.uri.getHost() + ((this.uri.getPort() == -1) ? "" : ":" + this.uri.getPort());
+			return this.uri.getHost() + (this.uri.getPort() == -1 ? "" : ":" + this.uri.getPort());
 		}
 
 	}

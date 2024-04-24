@@ -85,7 +85,7 @@ class MockMvcRequestConverter implements RequestConverter<MockHttpServletRequest
 		}
 		StringBuffer requestUrlBuffer = mockRequest.getRequestURL();
 		if (queryString.length() > 0) {
-			requestUrlBuffer.append("?").append(queryString.toString());
+			requestUrlBuffer.append("?").append(queryString);
 		}
 		return URI.create(requestUrlBuffer.toString());
 	}
@@ -270,7 +270,7 @@ class MockMvcRequestConverter implements RequestConverter<MockHttpServletRequest
 				parameters.add(decode(name), decode(value));
 			}
 			else {
-				List<String> values = parameters.computeIfAbsent(components[0], (p) -> new LinkedList<>());
+				List<String> values = parameters.computeIfAbsent(components[0], p -> new LinkedList<>());
 				values.add("");
 			}
 		}

@@ -19,6 +19,7 @@ package org.springframework.restdocs.webtestclient;
 import java.net.URI;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
+import java.util.Map;
 
 import org.junit.Test;
 
@@ -53,7 +54,7 @@ public class WebTestClientRequestConverterTests {
 
 	@Test
 	public void httpRequest() {
-		ExchangeResult result = WebTestClient.bindToRouterFunction(RouterFunctions.route(GET("/foo"), (req) -> null))
+		ExchangeResult result = WebTestClient.bindToRouterFunction(RouterFunctions.route(GET("/foo"), req -> null))
 			.configureClient()
 			.baseUrl("http://localhost")
 			.build()
@@ -69,7 +70,7 @@ public class WebTestClientRequestConverterTests {
 
 	@Test
 	public void httpRequestWithCustomPort() {
-		ExchangeResult result = WebTestClient.bindToRouterFunction(RouterFunctions.route(GET("/foo"), (req) -> null))
+		ExchangeResult result = WebTestClient.bindToRouterFunction(RouterFunctions.route(GET("/foo"), req -> null))
 			.configureClient()
 			.baseUrl("http://localhost:8080")
 			.build()
@@ -85,7 +86,7 @@ public class WebTestClientRequestConverterTests {
 
 	@Test
 	public void requestWithHeaders() {
-		ExchangeResult result = WebTestClient.bindToRouterFunction(RouterFunctions.route(GET("/"), (req) -> null))
+		ExchangeResult result = WebTestClient.bindToRouterFunction(RouterFunctions.route(GET("/"), req -> null))
 			.configureClient()
 			.baseUrl("http://localhost")
 			.build()
@@ -105,7 +106,7 @@ public class WebTestClientRequestConverterTests {
 
 	@Test
 	public void httpsRequest() {
-		ExchangeResult result = WebTestClient.bindToRouterFunction(RouterFunctions.route(GET("/foo"), (req) -> null))
+		ExchangeResult result = WebTestClient.bindToRouterFunction(RouterFunctions.route(GET("/foo"), req -> null))
 			.configureClient()
 			.baseUrl("https://localhost")
 			.build()
@@ -121,7 +122,7 @@ public class WebTestClientRequestConverterTests {
 
 	@Test
 	public void httpsRequestWithCustomPort() {
-		ExchangeResult result = WebTestClient.bindToRouterFunction(RouterFunctions.route(GET("/foo"), (req) -> null))
+		ExchangeResult result = WebTestClient.bindToRouterFunction(RouterFunctions.route(GET("/foo"), req -> null))
 			.configureClient()
 			.baseUrl("https://localhost:8443")
 			.build()
@@ -137,7 +138,7 @@ public class WebTestClientRequestConverterTests {
 
 	@Test
 	public void getRequestWithQueryString() {
-		ExchangeResult result = WebTestClient.bindToRouterFunction(RouterFunctions.route(GET("/foo"), (req) -> null))
+		ExchangeResult result = WebTestClient.bindToRouterFunction(RouterFunctions.route(GET("/foo"), req -> null))
 			.configureClient()
 			.baseUrl("http://localhost")
 			.build()
@@ -156,7 +157,7 @@ public class WebTestClientRequestConverterTests {
 		MultiValueMap<String, String> parameters = new LinkedMultiValueMap<>();
 		parameters.addAll("a", Arrays.asList("alpha", "apple"));
 		parameters.addAll("b", Arrays.asList("br&vo"));
-		ExchangeResult result = WebTestClient.bindToRouterFunction(RouterFunctions.route(POST("/foo"), (req) -> {
+		ExchangeResult result = WebTestClient.bindToRouterFunction(RouterFunctions.route(POST("/foo"), req -> {
 			req.body(BodyExtractors.toFormData()).block();
 			return null;
 		}))
@@ -179,7 +180,7 @@ public class WebTestClientRequestConverterTests {
 
 	@Test
 	public void postRequestWithQueryStringParameters() {
-		ExchangeResult result = WebTestClient.bindToRouterFunction(RouterFunctions.route(POST("/foo"), (req) -> {
+		ExchangeResult result = WebTestClient.bindToRouterFunction(RouterFunctions.route(POST("/foo"), req -> {
 			req.body(BodyExtractors.toFormData()).block();
 			return null;
 		}))
@@ -200,7 +201,7 @@ public class WebTestClientRequestConverterTests {
 	public void postRequestWithQueryStringAndFormDataParameters() {
 		MultiValueMap<String, String> parameters = new LinkedMultiValueMap<>();
 		parameters.addAll("a", Arrays.asList("apple"));
-		ExchangeResult result = WebTestClient.bindToRouterFunction(RouterFunctions.route(POST("/foo"), (req) -> {
+		ExchangeResult result = WebTestClient.bindToRouterFunction(RouterFunctions.route(POST("/foo"), req -> {
 			req.body(BodyExtractors.toFormData()).block();
 			return null;
 		}))
@@ -224,7 +225,7 @@ public class WebTestClientRequestConverterTests {
 	@Test
 	public void postRequestWithNoContentType() {
 		ExchangeResult result = WebTestClient
-			.bindToRouterFunction(RouterFunctions.route(POST("/foo"), (req) -> ServerResponse.ok().build()))
+			.bindToRouterFunction(RouterFunctions.route(POST("/foo"), req -> ServerResponse.ok().build()))
 			.configureClient()
 			.baseUrl("http://localhost")
 			.build()
@@ -244,8 +245,8 @@ public class WebTestClientRequestConverterTests {
 		multipartData.add("file", new byte[] { 1, 2, 3, 4 });
 		ExchangeResult result = WebTestClient
 			.bindToRouterFunction(RouterFunctions.route(POST("/foo"),
-					(req) -> ServerResponse.ok()
-						.body(req.body(BodyExtractors.toMultipartData()).map((parts) -> parts.size()), Integer.class)))
+					req -> ServerResponse.ok()
+						.body(req.body(BodyExtractors.toMultipartData()).map(Map::size), Integer.class)))
 			.configureClient()
 			.baseUrl("http://localhost")
 			.build()
@@ -281,8 +282,8 @@ public class WebTestClientRequestConverterTests {
 		});
 		ExchangeResult result = WebTestClient
 			.bindToRouterFunction(RouterFunctions.route(POST("/foo"),
-					(req) -> ServerResponse.ok()
-						.body(req.body(BodyExtractors.toMultipartData()).map((parts) -> parts.size()), Integer.class)))
+					req -> ServerResponse.ok()
+						.body(req.body(BodyExtractors.toMultipartData()).map(Map::size), Integer.class)))
 			.configureClient()
 			.baseUrl("http://localhost")
 			.build()
@@ -310,7 +311,7 @@ public class WebTestClientRequestConverterTests {
 
 	@Test
 	public void requestWithCookies() {
-		ExchangeResult result = WebTestClient.bindToRouterFunction(RouterFunctions.route(GET("/foo"), (req) -> null))
+		ExchangeResult result = WebTestClient.bindToRouterFunction(RouterFunctions.route(GET("/foo"), req -> null))
 			.configureClient()
 			.baseUrl("http://localhost")
 			.build()

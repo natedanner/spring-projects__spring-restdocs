@@ -130,7 +130,7 @@ public class PathParametersSnippet extends AbstractParametersSnippet {
 
 	private static String getParameterName(String match) {
 		int colonIndex = match.indexOf(':');
-		return (colonIndex != -1) ? match.substring(0, colonIndex) : match;
+		return colonIndex != -1 ? match.substring(0, colonIndex) : match;
 	}
 
 	@Override

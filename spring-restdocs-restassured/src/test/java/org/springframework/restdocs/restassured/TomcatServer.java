@@ -133,7 +133,7 @@ class TomcatServer extends ExternalResource {
 
 		@Override
 		protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-			if (!req.getQueryString().equals("a=alpha&a=apple&b=bravo")) {
+			if (!"a=alpha&a=apple&b=bravo".equals(req.getQueryString())) {
 				throw new ServletException("Incorrect query string");
 			}
 			resp.setStatus(200);

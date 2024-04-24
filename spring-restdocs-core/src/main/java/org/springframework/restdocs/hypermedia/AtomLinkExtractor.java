@@ -53,7 +53,7 @@ class AtomLinkExtractor extends AbstractJsonLinkExtractor {
 		if (relObject instanceof String && hrefObject instanceof String) {
 			Object titleObject = linkMap.get("title");
 			return new Link((String) relObject, (String) hrefObject,
-					(titleObject instanceof String) ? (String) titleObject : null);
+					titleObject instanceof String ? (String) titleObject : null);
 		}
 		return null;
 	}

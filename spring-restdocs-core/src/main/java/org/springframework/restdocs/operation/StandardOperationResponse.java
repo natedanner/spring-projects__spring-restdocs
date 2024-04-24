@@ -31,7 +31,7 @@ class StandardOperationResponse extends AbstractOperationMessage implements Oper
 
 	private final HttpStatusCode status;
 
-	private Collection<ResponseCookie> cookies;
+	private final Collection<ResponseCookie> cookies;
 
 	/**
 	 * Creates a new response with the given {@code status}, {@code headers}, and

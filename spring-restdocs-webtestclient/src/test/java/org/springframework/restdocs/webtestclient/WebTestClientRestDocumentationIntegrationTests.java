@@ -86,14 +86,14 @@ public class WebTestClientRestDocumentationIntegrationTests {
 	public void setUp() {
 		RouterFunction<ServerResponse> route = RouterFunctions
 			.route(RequestPredicates.GET("/"),
-					(request) -> ServerResponse.status(HttpStatus.OK).body(fromValue(new Person("Jane", "Doe"))))
+					request -> ServerResponse.status(HttpStatus.OK).body(fromValue(new Person("Jane", "Doe"))))
 			.andRoute(RequestPredicates.GET("/{foo}/{bar}"),
-					(request) -> ServerResponse.status(HttpStatus.OK).body(fromValue(new Person("Jane", "Doe"))))
+					request -> ServerResponse.status(HttpStatus.OK).body(fromValue(new Person("Jane", "Doe"))))
 			.andRoute(RequestPredicates.POST("/upload"),
-					(request) -> request.body(BodyExtractors.toMultipartData())
-						.map((parts) -> ServerResponse.status(HttpStatus.OK).build().block()))
+					request -> request.body(BodyExtractors.toMultipartData())
+						.map(parts -> ServerResponse.status(HttpStatus.OK).build().block()))
 			.andRoute(RequestPredicates.GET("/set-cookie"),
-					(request) -> ServerResponse.ok()
+					request -> ServerResponse.ok()
 						.cookie(ResponseCookie.from("name", "value").domain("localhost").httpOnly(true).build())
 						.build());
 		this.webTestClient = WebTestClient.bindToRouterFunction(route)
@@ -252,7 +252,7 @@ public class WebTestClientRestDocumentationIntegrationTests {
 	private void assertExpectedSnippetFilesExist(File directory, String... snippets) {
 		Set<File> actual = new HashSet<>(Arrays.asList(directory.listFiles()));
 		Set<File> expected = Stream.of(snippets)
-			.map((snippet) -> new File(directory, snippet))
+			.map(snippet -> new File(directory, snippet))
 			.collect(Collectors.toSet());
 		assertThat(actual).isEqualTo(expected);
 	}

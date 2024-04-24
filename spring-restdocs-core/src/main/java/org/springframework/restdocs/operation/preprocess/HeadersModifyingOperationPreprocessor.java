@@ -210,7 +210,7 @@ public class HeadersModifyingOperationPreprocessor implements OperationPreproces
 
 		@Override
 		public void applyTo(HttpHeaders headers) {
-			headers.keySet().removeIf((name) -> this.namePattern.matcher(name).matches());
+			headers.keySet().removeIf(name -> this.namePattern.matcher(name).matches());
 		}
 
 	}

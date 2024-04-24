@@ -112,7 +112,7 @@ public class Link {
 		int result = 1;
 		result = prime * result + this.href.hashCode();
 		result = prime * result + this.rel.hashCode();
-		result = prime * result + ((this.title == null) ? 0 : this.title.hashCode());
+		result = prime * result + (this.title == null ? 0 : this.title.hashCode());
 		return result;
 	}
 

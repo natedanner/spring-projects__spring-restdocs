@@ -35,9 +35,9 @@ import org.springframework.util.Assert;
  */
 public abstract class AbstractHeadersSnippet extends TemplatedSnippet {
 
-	private List<HeaderDescriptor> headerDescriptors;
+	private final List<HeaderDescriptor> headerDescriptors;
 
-	private String type;
+	private final String type;
 
 	/**
 	 * Creates a new {@code AbstractHeadersSnippet} that will produce a snippet named
